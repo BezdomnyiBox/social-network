@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="rus">
+<?php 
+  session_start();
+  if(isset($_SESSION['unique_id'])){
+    header("location: users.php");
+  }
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой чат</title>
-    <link rel="stylesheet" href="style.css">
-
-</head>
-
+<?php include_once "header.php"; ?>
 <body>
     <div class="wrapper">
         <section class="form signup">
@@ -34,15 +31,18 @@
                     <input type="password" name="password" placeholder="Enter new password" required>
                     <i class="fas fa-eye"></i>
                 </div>
-                <div class="field input">
+                <div class="field button">
                     <input type="submit" value="Начать общение">
                 </div>
             </form>
             <div class="link">
-                Вы зарегистрированы? <a href="../src/view/login.html">Войти</a>
+                Вы зарегистрированы? <a href="login.php">Войти</a>
             </div>
         </section>
     </div>
+
+    <script src="js/pass-show-hide.js"></script>
+    <script src="js/signup.js"></script>
 </body>
 
 </html>
