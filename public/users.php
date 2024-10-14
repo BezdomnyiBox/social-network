@@ -1,22 +1,11 @@
 <?php
 session_start();
-if (isset($_SESSION['unique_id'])) {
-    header("location: users.php");
+include_once "php/config.php";
+if (!isset($_SESSION['unique_id'])) {
+    header("location: login.php");
 }
 ?>
-
 <?php include_once "header.php"; ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Realtime Chat App</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-</head>
 
 <body>
     <div class="wrapper">
@@ -89,7 +78,7 @@ if (isset($_SESSION['unique_id'])) {
         </section>
     </div>
 
-    <!-- <script src="js/users.js"></script> -->
+    <script src="js/users.js"></script>
 </body>
 
 </html>
