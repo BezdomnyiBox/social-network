@@ -14,8 +14,8 @@ if (!empty($fname) && !empty($lname) && !empty($email) && !empty($password)) {
         if (mysqli_num_rows($sql) > 0) { //email уже существует
             echo "$email - такой адрес email уже существует";
         } else {
-            $status = "Active now"; //Только что зарегистрированный пользователь будет "в сети"
-            $unique_id = rand(time(), 10000000); //ID его сессии
+            $status = "В сети"; //Только что зарегистрированный пользователь будет "в сети"
+            $unique_id = rand(time(), 10000000);
             $sql_2 = mysqli_query($conn,
                 "INSERT INTO users (unique_id, fname, lname, email, password, status)
                 VALUES ({$unique_id}, '{$fname}', '{$lname}', '{$email}', '{$password}', '{$status}')"
