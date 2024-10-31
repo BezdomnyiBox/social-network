@@ -25,7 +25,7 @@ if (!isset($_SESSION['unique_id'])) {
                         <p><?php echo $row['status'] ?></p>
                     </div>
                 </div>
-                <a href="#" class="logout">Выйти</a>
+                <a href="php/logout.php?logout_id=<?php echo $row['unique_id']; ?>" class="logout">Выйти</a>
             </header>
             <div class="search">
                 <span class="text">Найти чат</span>

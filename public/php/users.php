@@ -6,7 +6,7 @@ $sql = "SELECT * FROM users WHERE NOT unique_id = {$outgoing_id} ORDER BY user_i
 $query = mysqli_query($conn, $sql);
 $output = "";
 if(mysqli_num_rows($query) == 0){
-    $output .= "Нет пользователей в сети";
+    $output .= "Нет доступных пользователей";
 } elseif (mysqli_num_rows($query) > 0) {
     include_once "data.php";
 }

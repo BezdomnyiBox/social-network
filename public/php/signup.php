@@ -16,23 +16,25 @@ if (!empty($fname) && !empty($lname) && !empty($email) && !empty($password)) {
         } else {
             $status = "В сети"; //Только что зарегистрированный пользователь будет "в сети"
             $unique_id = rand(time(), 10000000);
-            $sql_2 = mysqli_query($conn,
+            $encrypt_pass = md5($password);
+            $sql_2 = mysqli_query(
+                $conn,
                 "INSERT INTO users (unique_id, fname, lname, email, password, status)
-                VALUES ({$unique_id}, '{$fname}', '{$lname}', '{$email}', '{$password}', '{$status}')"
+                VALUES ({$unique_id}, '{$fname}', '{$lname}', '{$email}', '{$encrypt_pass}', '{$status}')"
             );
-            if($sql_2){ //если данные успешно сохранены
+            if ($sql_2) { //если данные успешно сохранены
                 $sql_3 = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}'");
-                if(mysqli_num_rows($sql_3) > 0){
+                if (mysqli_num_rows($sql_3) > 0) {
                     $row = mysqli_fetch_assoc($sql_3);
                     $_SESSION['unique_id'] = $row['unique_id']; //устанавливаем сессию для пользователя
                     echo "success";
                 }
-            }else{
+            } else {
                 echo "Что-то пошло не так";
             }
         }
     } else {
-        echo "$email - некорректный адрес";
+        echo "$email - некорректный адрес email";
     }
 } else {
     echo "Необходимо заполнить все поля";
